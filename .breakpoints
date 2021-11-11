@@ -1,0 +1,20 @@
+{
+  "files": {
+    "Stack.cpp": [
+      {
+        "id": "1759e5fd-e80a-441d-9a94-9f2fcb87e1c2",
+        "line": 172,
+        "version": 12661,
+        "index": 2786
+      }
+    ],
+    "stack.hpp": [
+      {
+        "id": "993724cc-44fc-4bd0-ae11-2dda4692cb4b",
+        "line": 3,
+        "version": 42,
+        "index": 14
+      }
+    ]
+  }
+}
