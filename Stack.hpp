@@ -30,11 +30,9 @@ namespace StackTop {
 		bool empty() const; // Returns true if stack is empty
     void clear(); 
     
-		Stack& operator=(const Stack& s);
-		void reverse();
-
-    StackFrame<T> getTop(); 
-    void insertToBottom(T info); // helper function
+		Stack& operator=(const Stack& s); // Overload operator for =
+		void reverse(); // Reverses teh stack
+    void insertToBottom(T info); // helper function for reverse
 	private:
 		StackFramePtr<T> top;
     StackFramePtr<T> clone(StackFramePtr<T> source); 
