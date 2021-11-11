@@ -7,14 +7,12 @@
 using namespace StackTop;
 using namespace std;
 
-
+// Constructor Function
 template<typename T>
 Stack<T>::Stack() {
 	top = NULL;
 }
 
-//What does this even do?
-// Constructor Function
 
 template<typename T>
 int Stack<T>::getSize() {
@@ -54,11 +52,12 @@ void Stack<T>::clear () {
   } else {return;}
 }
 
+// Delete constuctor
 template<typename T>
 Stack<T>::~Stack() {
-	T next;
+	
 	while (!empty()) {
-		next = pop(); // pop calls delete
+		 pop(); // pop calls delete
 	}
 }
 
@@ -68,10 +67,12 @@ bool Stack<T>::empty() const {
 	return (top == nullptr);
 }
 
+// Looks at top of stack, and returns the top
 template<typename T>
 StackFramePtr<T> Stack<T>::peek() {
 	return top;
 }
+
 //Copy constructor
 template<typename T>
 Stack<T>::Stack(const Stack& stack){
@@ -80,6 +81,7 @@ Stack<T>::Stack(const Stack& stack){
   
 }
 
+//Helper function for copy
 template<typename T>
 StackFramePtr<T> Stack<T>::clone(StackFramePtr<T> source) {
   if (source == NULL){
@@ -100,65 +102,7 @@ StackFramePtr<T> Stack<T>::clone(StackFramePtr<T> source) {
    }
 }
 
-  /*
-  StackFramePtr<T> newNode = new StackFramePtr<T>;
-  newNode -> data = source -> data; 
-  this -> link = newNode; 
-  Stack();
-*/
-/*
-//Create a new adress for the deep copy, in top. 
-//Setting new adress for top
-  StackFramePtr<T> topHelper; 
-  this -> top = topHelper; 
-  delete topHelper; 
-
-//Changing the data and setting a new adress for the link pointer thing
-
-  this -> data = source->data; 
-  StackFramePtr<T> linker;
-  this -> link = linker; 
-
-//go into link and repeat again until the size of new stack equals the size of the source stack. in that case set link = null. 
-*/
-/*
-NodePtr newNode = new Node;
-  newNode->key = root->key;
-  newNode -> left = clone(root ->left);
-*/
-/*
-1) Access top
-2) Change the data in top
-3) Set a new link address. 
-
-these are notes for my own use
-
-NodePtr BinarySearchTree::clone(NodePtr root) const{
-
-  if (root){
-  NodePtr newNode = new Node;
-  newNode->key = root->key;
-  newNode -> left = clone(root ->left);
-  newNode -> right = clone(root ->right);
-  return newNode;
-}
-return NULL;
-}
-
-*/
-
-  
-
-
-
-  
-
-
-  
-
-
-
-
+// Overload operator for =
 template<typename T>
 Stack<T>& Stack<T>::operator=(const Stack<T>& s) {
   if (this == &s){
@@ -224,6 +168,7 @@ For deep copy
 
 */
 
+// pop function, deletes top of stack
 template<typename T>
 T Stack<T>::pop() {
 	if (empty()) {
@@ -246,14 +191,16 @@ T Stack<T>::pop() {
 		}
 	}
 }
+
+// Pushes new data into the stack
 template<typename T>
 void Stack<T>::push(T data) {
   try {
 		StackFramePtr<T> newStack = new StackFrame<T>;
 		
-    newStack->data = data;
-		newStack->link = top;
-		top = newStack;
+    newStack->data = data; // newStack data = data
+		newStack->link = top; // newStack top now pointed to old top
+		top = newStack; // points top to new top of the stack (newStack)
   
   }
 	catch (std::bad_alloc e) {
@@ -262,6 +209,7 @@ void Stack<T>::push(T data) {
 	}
 }
 
+//Helper function for reverse
 template<typename T>
 void Stack<T>::insertToBottom(T info){
   StackFramePtr<T> temp = peek();
@@ -275,6 +223,7 @@ void Stack<T>::insertToBottom(T info){
   }
 }
 
+// Reverses the stack
 template<typename T>
 void Stack<T>::reverse(){
 
@@ -284,6 +233,8 @@ if (empty() != true){
   insertToBottom(info); // Inserts to bottom
    }
 }
+
+
 
 
 /*
